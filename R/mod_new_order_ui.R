@@ -41,8 +41,9 @@ mod_new_order_ui <- function(id) {
             id = ns("price"),
             type = "number",
             class = "form-control form-control-lg",
-            placeholder = "Price",
-            `aria-label` = "Price"
+            placeholder = 125,
+            `aria-label` = "Price",
+            step = "any"
           ),
           
           tags$label(
