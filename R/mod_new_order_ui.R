@@ -17,15 +17,7 @@ mod_new_order_ui <- function(id) {
         ),
         
         tags$div(
-          class = "mb-3 form-floating",
-          
-          tags$input(
-            id = ns("order_id"),
-            type = "text", 
-            class = "form-control form-control-lg",
-            placeholder = "Order ID", 
-            `aria-label` = "Order ID"
-          ),
+          class = "mb-3",
           
           tags$label(
             "for" = ns("order_id"), 
@@ -39,20 +31,19 @@ mod_new_order_ui <- function(id) {
                 "*"
               )
             )
+          ),
+          
+          tags$input(
+            id = ns("order_id"),
+            type = "text", 
+            class = "form-control form-control-lg",
+            placeholder = "Order ID", 
+            `aria-label` = "Order ID"
           )
         ),
         
         tags$div(
-          class = "mb-3 form-floating",
-          
-          tags$input(
-            id = ns("price"),
-            type = "number",
-            class = "form-control form-control-lg",
-            placeholder = 125,
-            `aria-label` = "Price",
-            step = "any"
-          ),
+          class = "mb-3",
           
           tags$label(
             "for" = ns("price"), 
@@ -66,8 +57,36 @@ mod_new_order_ui <- function(id) {
                 "*"
               )
             )
+          ),
+          
+          tags$input(
+            id = ns("price"),
+            type = "number",
+            class = "form-control form-control-lg",
+            placeholder = 125,
+            `aria-label` = "Price",
+            step = "any"
           )
-        ), 
+        ),
+        
+        tags$div(
+          class = "mb-3", 
+          
+          shinyWidgets::airDatepickerInput(
+            inputId = ns("date"),
+            label = tags$div(
+              "Completion Date",
+              tags$span(
+                id = ns("date_req"),
+                class = "text-danger",
+                "*"
+              )
+            ),
+            value = NULL,
+            addon = "none",
+            width = "100%"
+          )
+        ),
         
         tags$div(
           class = "mb-3", 
