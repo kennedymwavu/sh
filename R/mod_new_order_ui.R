@@ -11,10 +11,12 @@ mod_new_order_ui <- function(id) {
           "border border-1 border-light"
         ), 
         
-        tags$h3(
+        tags$h1(
           "New Order", 
-          class = "mt-0 p-0 mb-3"
+          class = "mb-0 mt-0 p-0 text-muted"
         ),
+        
+        tags$hr(class = "mb-4 mt-0"),
         
         tags$div(
           class = "mb-3",
