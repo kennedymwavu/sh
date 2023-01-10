@@ -29,8 +29,16 @@ mod_new_order_ui <- function(id) {
           
           tags$label(
             "for" = ns("order_id"), 
-            class = "form-label", 
-            "Order ID"
+            class = "form-label",
+            
+            tags$div(
+              "Order ID", 
+              tags$span(
+                id = ns("order_id_req"),
+                class = "text-danger",
+                "*"
+              )
+            )
           )
         ),
         
@@ -49,7 +57,15 @@ mod_new_order_ui <- function(id) {
           tags$label(
             "for" = ns("price"), 
             class = "form-label",
-            "Price"
+            
+            tags$div(
+              "Price", 
+              tags$span(
+                id = ns("price_req"),
+                class = "text-danger",
+                "*"
+              )
+            )
           )
         ), 
         
