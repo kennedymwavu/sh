@@ -75,11 +75,11 @@ mod_new_order_ui <- function(id) {
           class = "mb-3", 
           
           shinyWidgets::airDatepickerInput(
-            inputId = ns("date"),
+            inputId = ns("deadline"),
             label = tags$div(
-              "Completion Date",
+              "Deadline",
               tags$span(
-                id = ns("date_req"),
+                id = ns("deadline_req"),
                 class = "text-danger",
                 "*"
               )

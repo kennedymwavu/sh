@@ -7,14 +7,14 @@ mod_new_order_server <- function(id) {
         print("Adding order...")
       )
       
-      # add class to "date" so it looks same as other inputs:
+      # add class to "deadline" so it looks same as other inputs:
       shinyjs::addClass(
-        id = "date",
+        id = "deadline",
         class = "form-control-lg"
       )
       
       observeEvent(
-        eventExpr = c(input$order_id, input$price, input$date), 
+        eventExpr = c(input$order_id, input$price, input$deadline), 
         handlerExpr = {
           # show/hide * in req fields:
           shinyjs::toggle(
@@ -28,8 +28,8 @@ mod_new_order_server <- function(id) {
           )
           
           shinyjs::toggle(
-            id = "date_req",
-            condition = !isTruthy(input$date)
+            id = "deadline_req",
+            condition = !isTruthy(input$deadline)
           )
           
           # enable/disable `add_order` btn:
@@ -37,7 +37,7 @@ mod_new_order_server <- function(id) {
             id = "add_order", 
             condition = isTruthy(input$order_id) && 
               isTruthy(input$price) && 
-              isTruthy(input$date)
+              isTruthy(input$deadline)
           )
         }
       )
