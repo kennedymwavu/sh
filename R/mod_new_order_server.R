@@ -4,7 +4,28 @@ mod_new_order_server <- function(id) {
     module = function(input, output, session) {
       shinyjs::onclick(
         id = "add_order",
-        print("Adding order...")
+        {
+          # read previous orders, bind new order:
+          orders <- rbind(
+            readRDS(file = "orders.rds"), # this is a data.table
+            list(
+              order_id = input$order_id,
+              price = as.integer(input$price),
+              deadline = lubridate::ymd_hms(
+                input$deadline, 
+                tz = "Africa/Nairobi"
+              ),
+              status = input$status
+            )
+          )
+          
+          # save orders:
+          saveRDS(object = orders, file = "orders.rds")
+          
+          shinytoastr::toastr_success(
+            message = paste0("Order ID ", input$order_id, " added")
+          )
+        }
       )
       
       # add class to "deadline" so it looks same as other inputs:
