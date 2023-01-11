@@ -3,13 +3,15 @@ mod_new_order_ui <- function(id) {
   
   shiny::tagList(
     tags$div(
-      class = "d-flex flex-column justify-content-center align-items-center", 
+      class = "d-flex flex-column justify-content-center", 
       
       tags$form(
+        id = ns("form"),
         class = paste(
-          "d-flex flex-column justify-content-center p-5",
+          "d-flex flex-column p-5 m-auto",
           "border border-1 border-light"
         ), 
+        style = "width: 430px;",
         
         tags$h1(
           "New Order", 
@@ -21,53 +23,37 @@ mod_new_order_ui <- function(id) {
         tags$div(
           class = "mb-3",
           
-          tags$label(
-            "for" = ns("order_id"), 
-            class = "form-label",
-            
-            tags$div(
-              "Order ID", 
+          shiny::textInput(
+            inputId = ns("order_id"),
+            label = shiny::tagList(
+              "Order ID",
               tags$span(
                 id = ns("order_id_req"),
                 class = "text-danger",
                 "*"
               )
-            )
-          ),
-          
-          tags$input(
-            id = ns("order_id"),
-            type = "text", 
-            class = "form-control form-control-lg",
-            placeholder = "Order ID", 
-            `aria-label` = "Order ID"
+            ),
+            placeholder = "Order ID",
+            width = "100%"
           )
         ),
+        
         
         tags$div(
           class = "mb-3",
           
-          tags$label(
-            "for" = ns("price"), 
-            class = "form-label",
-            
-            tags$div(
+          shiny::numericInput(
+            inputId = ns("price"),
+            label = shiny::tagList(
               "Price", 
               tags$span(
                 id = ns("price_req"),
                 class = "text-danger",
                 "*"
               )
-            )
-          ),
-          
-          tags$input(
-            id = ns("price"),
-            type = "number",
-            class = "form-control form-control-lg",
-            placeholder = 125,
-            `aria-label` = "Price",
-            step = "1"
+            ),
+            value = NULL,
+            width = "100%"
           )
         ),
         
@@ -99,7 +85,7 @@ mod_new_order_ui <- function(id) {
             label = "Status", 
             choices = c("Outstanding", "Paid"), 
             selected = "Outstanding", 
-            inline = TRUE, 
+            inline = TRUE,
             width = "100%"
           )
         ),
@@ -108,6 +94,7 @@ mod_new_order_ui <- function(id) {
           id = ns("add_order"),
           type = "submit",
           class = "btn btn-primary",
+          
           "Add Order"
         )
       )
