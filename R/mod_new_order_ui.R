@@ -67,7 +67,7 @@ mod_new_order_ui <- function(id) {
             class = "form-control form-control-lg",
             placeholder = 125,
             `aria-label` = "Price",
-            step = "any"
+            step = "1"
           )
         ),
         
@@ -85,6 +85,7 @@ mod_new_order_ui <- function(id) {
               )
             ),
             value = NULL,
+            timepicker = TRUE,
             addon = "none",
             width = "100%"
           )
