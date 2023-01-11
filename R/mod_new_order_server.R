@@ -2,9 +2,30 @@ mod_new_order_server <- function(id) {
   shiny::moduleServer(
     id = id, 
     module = function(input, output, session) {
+      ns <- session$ns
+      
       shinyjs::onclick(
         id = "add_order",
         {
+          # show loading spinner on btn:
+          shinyjs::html(
+            id = "add_order",
+            html = htmltools::doRenderTags(
+              x = shiny::tagList(
+                tags$span(
+                  class = "spinner-border spinner-border-sm",
+                  role = "status",
+                  `aria-hidden` = "true"
+                ),
+                
+                "Adding..."
+              )
+            )
+          )
+          
+          # disable btn:
+          shinyjs::disable(id = "add_order")
+          
           # read previous orders, bind new order:
           orders <- rbind(
             readRDS(file = "orders.rds"), # this is a data.table
@@ -22,16 +43,25 @@ mod_new_order_server <- function(id) {
           # save orders:
           saveRDS(object = orders, file = "orders.rds")
           
+          # restore initial html on btn:
+          shinyjs::html(
+            id = "add_order",
+            html = "Add Order"
+          )
+          
+          # reset form:
+          lapply(c("order_id", "price", "status"), shinyjs::reset)
+          shinyWidgets::updateAirDateInput(
+            session = session,
+            inputId = "deadline",
+            clear = TRUE
+          )
+          
+          # show success:
           shinytoastr::toastr_success(
             message = paste0("Order ID ", input$order_id, " added")
           )
         }
-      )
-      
-      # add class to "deadline" so it looks same as other inputs:
-      shinyjs::addClass(
-        id = "deadline",
-        class = "form-control-lg"
       )
       
       observeEvent(
