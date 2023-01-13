@@ -16,10 +16,8 @@ server <- function(input, output, session) {
     }
   )
   
-  os <- reactive({
-    all()[status %chin% "Outstanding"]
-  })
-  
-  mod_os_server(id = "os", os)
+  mod_table_server(id = "all", orders = all, status = NULL)
+  mod_table_server(id = "os", orders = all, status = "Outstanding")
+  mod_table_server(id = "paid", orders = all, status = "Paid")
   mod_new_order_server(id = "new_order")
 }
