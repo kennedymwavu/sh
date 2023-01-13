@@ -7,5 +7,6 @@ ui <- bslib::page(
   shinyjs::useShinyjs(),
   shinytoastr::useToastr(),
   
+  mod_os_ui(id = "os"),
   mod_new_order_ui(id = "new_order")
 )
