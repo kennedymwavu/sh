@@ -36,22 +36,21 @@ mod_table_server <- function(id, orders, status) {
               price = reactable::colDef(cell = as_currency("$")),
               net_price = reactable::colDef(cell = as_currency("$")),
               status = reactable::colDef(cell = function(value) {
-                # Render X or tick:
-                if (value == "Outstanding") "\u274c OS" else "\u2714\ufe0f Paid"
-                
-                color <- switch(
-                  value,
-                  Paid = "hsl(214, 45%, 50%)",
-                  Outstanding = "hsl(30, 97%, 70%)"
-                )
-                
                 label <- switch(
                   value,
                   Paid = "Paid",
                   Outstanding = "Pending"
                 )
                 
-                badge <- status_badge(color = color)
+                badge <- switch(
+                  value,
+                  Paid = tags$i(
+                    class = "bi bi-check-lg text-success pe-1"
+                  ),
+                  Outstanding = tags$i(
+                    class = "bi bi-circle-fill text-warning pe-1"
+                  )
+                )
                 
                 shiny::tagList(badge, label)
               })
