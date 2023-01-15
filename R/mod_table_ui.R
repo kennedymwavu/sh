@@ -22,7 +22,28 @@ mod_table_ui <- function(id, status = NULL) {
         shinycssloaders::withSpinner(
           type = 2,
           color.background = "white"
+        ),
+      
+      if (!is.null(status)) {
+        tags$div(
+          class = "d-flex justify-content-center mt-3",
+          
+          shinyjs::hidden(
+            shiny::actionButton(
+              inputId = ns("change_status"),
+              label = paste(
+                "Mark selected as",
+                switch(
+                  status,
+                  Paid = "OS",
+                  Outstanding = "Paid"
+                )
+              ),
+              class = "btn btn-primary"
+            )
+          )
         )
+      }
     )
   )
 }

@@ -69,6 +69,26 @@ mod_table_server <- function(id, orders, status) {
           wrap = FALSE
         )
       })
+      
+      selected <- reactive({
+        reactable::getReactableState(
+          outputId = "table",
+          name = "selected",
+          session = session
+        )
+      })
+      
+      # hide/show `change_status` btn:
+      shiny::observeEvent(
+        eventExpr = selected(), 
+        handlerExpr = {
+          shinyjs::toggle(
+            id = "change_status",
+            condition = shiny::isTruthy(selected())
+          )
+        },
+        ignoreNULL = FALSE
+      )
     }
   )
 }
