@@ -89,6 +89,24 @@ mod_table_server <- function(id, orders, status) {
         },
         ignoreNULL = FALSE
       )
+      
+      # change order status:
+      shiny::observeEvent(
+        eventExpr = input$change_status,
+        handlerExpr = {
+          order_ids <- tbl()$order_id[selected()]
+          orders_copy <- data.table::copy(orders())
+          new_status <- switch(
+            status,
+            Paid = "Outstanding",
+            Outstanding = "Paid"
+          )
+          orders_copy[order_id %in% order_ids, status := new_status]
+          
+          # update file:
+          saveRDS(object = orders_copy, file = "orders.rds")
+        }
+      )
     }
   )
 }
