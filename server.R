@@ -18,6 +18,7 @@ server <- function(input, output, session) {
   
   mod_table_server(id = "all", orders = all, status = NULL)
   mod_table_server(id = "os", orders = all, status = "Outstanding")
+  mod_request_payments_server(id = "payments", orders = all)
   mod_table_server(id = "paid", orders = all, status = "Paid")
   mod_new_order_server(id = "new_order")
 }

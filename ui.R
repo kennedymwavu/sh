@@ -9,6 +9,7 @@ ui <- bslib::page(
   
   mod_table_ui(id = "all", status = NULL),
   mod_table_ui(id = "os", status = "Outstanding"),
+  mod_request_payments_ui(id = "payments"),
   mod_table_ui(id = "paid", status = "Paid"),
   mod_new_order_ui(id = "new_order")
 )
