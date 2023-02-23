@@ -5,7 +5,9 @@ ui <- bslib::page(
   shinyjs::useShinyjs(),
   shinytoastr::useToastr(),
 
-  shiny::tags$div(
+  shiny::tags$body(
+    class = "bg-light d-flex justify-content-center",
+    shiny::tags$div(
     class = paste(
       "container m-3 bg-white p-3 shadow rounded",
       "d-flex justify-content-center"
@@ -41,6 +43,7 @@ ui <- bslib::page(
         mod_table_ui(id = "paid", status = "Paid")
       )
     )
+  )
   )
 )
 
