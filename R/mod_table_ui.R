@@ -11,12 +11,7 @@ mod_table_ui <- function(id, status = NULL) {
   
   shiny::tagList(
     tags$div(
-      class = "mb-3 container",
-      
-      tags$h1(
-        trimws(paste(status, "Orders")),
-        class = "text-muted text-center"
-      ),
+      class = "mb-3 p-5",
       
       reactable::reactableOutput(outputId = ns("table")) |> 
         shinycssloaders::withSpinner(
