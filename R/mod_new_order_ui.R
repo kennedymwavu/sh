@@ -2,23 +2,9 @@ mod_new_order_ui <- function(id) {
   ns <- shiny::NS(id)
   
   shiny::tagList(
-    tags$div(
-      class = "d-flex flex-column justify-content-center", 
-      
-      tags$form(
+    tags$form(
         id = ns("form"),
-        class = paste(
-          "d-flex flex-column p-5 m-auto",
-          "border border-1 border-light"
-        ), 
-        style = "width: 430px;",
-        
-        tags$h1(
-          "New Order", 
-          class = "mb-0 mt-0 p-0 text-muted"
-        ),
-        
-        tags$hr(class = "mb-4 mt-0"),
+        class = "d-flex flex-column p-5",
         
         tags$div(
           class = "mb-3",
@@ -98,6 +84,5 @@ mod_new_order_ui <- function(id) {
           "Add Order"
         )
       )
-    )
   )
 }
