@@ -49,7 +49,7 @@ mod_table_server <- function(id, orders, status) {
                 cell = function(value) {
                   label <- switch(value,
                     Paid = "Paid",
-                    Outstanding = "Pending"
+                    Outstanding = "OS"
                   )
 
                   badge <- switch(value,
