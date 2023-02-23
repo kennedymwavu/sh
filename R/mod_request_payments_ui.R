@@ -9,7 +9,7 @@ mod_request_payments_ui <- function(id) {
         outputId = ns("dnld"),
         icon = shiny::icon(name = NULL, class = "bi bi-download"),
         label = "Get xlsx file of outstanding orders",
-        class = "btn btn-outline-dark"
+        class = "btn btn-outline-success"
       )
     )
   )
