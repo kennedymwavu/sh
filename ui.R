@@ -9,7 +9,7 @@ ui <- bslib::page(
     class = "bg-light d-flex justify-content-center",
     shiny::tags$div(
     class = paste(
-      "container m-3 bg-white p-3 shadow rounded",
+      "container m-3 p-5 bg-white shadow rounded",
       "d-flex justify-content-center"
     ),
 
