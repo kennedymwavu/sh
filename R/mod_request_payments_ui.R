@@ -3,10 +3,11 @@ mod_request_payments_ui <- function(id) {
   
   shiny::tagList(
     tags$div(
-      class = "d-flex justify-content-center",
+      class = "d-flex justify-content-center mb-3",
       
       shiny::downloadButton(
         outputId = ns("dnld"),
+        icon = shiny::icon(name = NULL, class = "bi bi-download"),
         label = "Get xlsx file of outstanding orders",
         class = "btn btn-outline-dark"
       )
