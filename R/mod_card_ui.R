@@ -20,7 +20,7 @@ mod_card_ui <- function(
       shiny::tags$div(
         class = "card card-flip h-100",
         shiny::tags$div(
-          class = "card-front text-white bg-dark",
+          class = "card-front text-white bg-dark bg-gradient",
           card_body(
             amount = amount,
             title = title,
@@ -29,7 +29,7 @@ mod_card_ui <- function(
           )
         ),
         shiny::tags$div(
-          class = "card-back text-white bg-dark",
+          class = "card-back text-white bg-dark bg-gradient",
           card_body(
             amount = amount * 0.65,
             title = title,
