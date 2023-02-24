@@ -21,14 +21,13 @@ server <- function(input, output, session) {
       class = "p-5 row",
       mod_card_ui(
         id = "os_card",
-        amount = all()[status %in% "Outstanding", sum(price)] |>
-          as_currency("$")(),
+        amount = all()[status %in% "Outstanding", sum(price)],
         title = "Outstanding Orders",
         icon = "bi bi-exclamation-octagon text-warning"
       ),
       mod_card_ui(
         id = "paid_card",
-        amount = all()[status %in% "Paid", sum(price)] |> as_currency("$")(),
+        amount = all()[status %in% "Paid", sum(price)],
         title = "Paid Orders",
         icon = "bi bi-check2-all text-success"
       )
