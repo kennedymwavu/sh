@@ -1,49 +1,43 @@
 #' Module card UI
 #'
 #' @param id Module id
-#' @param amount Amount to be shown in the card, including currency
+#' @param amount Numeric value to be shown in the card
 #' @param title Title of the card
-#' @param subtitle Subtitle of the card
+#' @param subtitle_front Subtitle to be shown in the front of the card
+#' @param subtitle_back Subtitle to be shown in the back of the card
 #' @param icon Icon to be shown in the card. Can also include other classes.
 #' @return [shiny::tagList()]
-mod_card_ui <- function(id, amount, title, subtitle = "Total Price", icon) {
+mod_card_ui <- function(
+    id,
+    amount,
+    title,
+    subtitle_front = "Total Price",
+    subtitle_back = "Net Price",
+    icon) {
   shiny::tagList(
     shiny::tags$div(
-        class = "col-xl-6 col-md-12 mb-4",
+      class = "col-xl-6 col-md-12 mb-4",
+      shiny::tags$div(
+        class = "card card-flip h-100",
         shiny::tags$div(
-          class = "card",
-          shiny::tags$div(
-            class = "card-body",
-            shiny::tags$div(
-              class = "d-flex justify-content-between p-md-1",
-              shiny::tags$div(
-                class = "d-flex flex-row",
-                shiny::tags$div(
-                  class = "align-self-center",
-                  shiny::tags$h2(
-                    class = "h1 mb-0 me-4",
-                    amount
-                  )
-                ),
-                shiny::tags$div(
-                  shiny::tags$h4(
-                    title
-                  ),
-                  shiny::tags$p(
-                    class = "mb-0",
-                    subtitle
-                  )
-                )
-              ),
-              shiny::tags$div(
-                class = "align-self-center",
-                shiny::tags$i(
-                  class = paste("bi", icon, "h1")
-                )
-              )
-            )
+          class = "card-front text-white bg-dark",
+          card_body(
+            amount = amount,
+            title = title,
+            subtitle = subtitle_front,
+            icon = icon
+          )
+        ),
+        shiny::tags$div(
+          class = "card-back text-white bg-dark",
+          card_body(
+            amount = amount * 0.65,
+            title = title,
+            subtitle = subtitle_back,
+            icon = icon
           )
         )
       )
+    )
   )
 }
