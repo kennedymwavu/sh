@@ -1,0 +1,11 @@
+name: track-orders
+title:
+username:
+account: mwavu
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8400285
+bundleId: 6882231
+url: https://mwavu.shinyapps.io/track-orders/
+when: 1677217823.97217
+lastSyncTime: 1677217823.97218
